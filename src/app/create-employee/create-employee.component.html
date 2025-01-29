@@ -1,0 +1,89 @@
+<div class="container">
+    
+    <form action="" [formGroup]="empForm">
+        <h1>{{id ? 'Edit Employee Details' : 'Create Employee'}}</h1>
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" formControlName="name">
+
+        <label for="company">Company:</label>
+        <input type="text" id="company" formControlName="company">
+
+        <label for="role">Role:</label>
+        <input type="text" id="role" formControlName="role">
+
+        <label for="package">Package:</label>
+        <input type="number" id="package" formControlName="package">
+
+        <label for="dob">DOB:</label>
+        <input type="date" id="dob" formControlName="dob">
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" formControlName="email">
+
+                 <div formGroupName="address">
+
+                                <label for="">AddressLine :</label>
+                                <input type="text" formControlName="addressLine">
+
+                                <label for="">City :</label>
+                                <input type="text" formControlName="city">
+
+                                <label for="">State :</label>
+                                <input type="text" formControlName="state">
+
+                                <label for="">Pin Code :</label>
+                                <input type="number" formControlName="pincode">
+                 
+                
+                </div>
+
+        <label for="">Type :::</label>
+
+        <input type="radio" name="work" formControlName="type" value="remote">
+        <label for="">Work from Home</label>
+
+        <input type="radio" name="work" formControlName="type" value="workfromoffice">
+        <label for="">Work from Office</label>
+
+        <div *ngIf="empForm.get('type')?.value=='remote'">
+            <label for="">Wifi Bill ammount ::</label>
+            <input type="number" formControlName="wifibill">
+        </div>
+
+        <div *ngIf="empForm.get('type')?.value=='workfromoffice'">
+            <label for="">Travell Bill ammount ::</label>
+            <input type="number" formControlName="transbill">
+        </div>
+<br>
+
+        <button class="btn btn-info" (click)="moredetails()">More Details</button>
+                <div formArrayName="details">
+                    <div *ngFor="let detail of detailsFormArray.controls; let i=index">
+                        <div formGroupName="{{i}}">
+                            <h2>details{{i+1}}</h2>
+
+                            <label for="">Hike :</label>
+                            <input type="number" formControlName="hike"><br>
+
+                            <label for="">WorkMode :</label>
+                            <input type="text" formControlName="workMode"><br>
+
+                            <label for="">TravelBill</label>
+                            <input type="number" formControlName="travelBill"><br>
+
+                            
+
+
+                            <button  class="btn btn-info" (click)="delete(i)">Delete card</button>
+
+                        </div>
+
+                    </div> 
+
+                </div>
+                <br>
+
+        <button class="btn" (click)="submit()">Submit</button>
+    </form>
+</div>

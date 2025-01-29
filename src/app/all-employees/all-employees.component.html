@@ -1,0 +1,94 @@
+ <br>
+ <h1>Employees details</h1>
+ <br>
+
+
+
+<!-- ==================================pagination=========================================================== -->
+
+<select [(ngModel)]="limit">
+    <option>10</option>
+    <option>20</option>
+    <option>30</option>
+    <option>40</option>
+    <option>50</option>
+    <option>60</option>
+    
+</select>
+
+<select [(ngModel)]="page" >
+    <option >1</option>
+    <option >5</option>
+</select>
+<i>&nbsp;</i>
+
+
+<button class="btn btn-primary" (click)="pagination()">Pagination</button><i>&nbsp;</i>
+<i>&nbsp;</i>
+
+
+<!-- ================filter================================================================= -->
+
+<input type="text" [(ngModel)]="text" (keyup)="filter()"><i>&nbsp;</i>
+<i>&nbsp;</i>
+
+
+<!-- ===============================sort===================================================== -->
+
+<select [(ngModel)]="column">
+    <option>name</option>
+    <option>company</option>
+    <option>role</option>
+    <option>package</option>
+    <option>email</option>
+    <option>dob</option>
+    
+</select>
+
+<select [(ngModel)]="order" >
+    <option >asc</option>
+    <option >dese</option>
+</select>
+<i>&nbsp;</i>
+
+
+<button class="btn btn-primary" (click)="sort()">sort</button>
+
+<br><br>
+
+<!-- =======================table get and delete================================================= -->
+
+<table class="table table-dark table-hover table-bordered">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>company</th>
+            <th>role</th>
+            <th>package</th>
+            <th>email</th>
+            <th>dob</th>
+            <th>City</th>
+            
+            <th colspan="3" class="col">actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let employees of employees">
+            <td>{{employees.name}}</td>
+            <td>{{employees.company}}</td>
+            <td>{{employees.role}}</td>
+            <td [ngStyle]="{'color': employees.package < 900000 ? 'red' : 'green '}">{{employees.package}}</td>
+            <td>{{employees.email}}</td>
+            <td>{{employees.dob}}</td>
+            <td>{{employees.address.city}}</td>
+          
+            <td><button class="btn btn-danger" (click)="delete(employees.id)">DELETE</button></td>
+            <td><button class="btn btn-info" routerLink="/dashboard/view-employee/{{employees.id}}">view</button></td>
+            <td><button class="btn btn-primary" routerLink="/dashboard/edit-employee/{{employees.id}}">Edit</button></td>
+
+
+        </tr>
+    </tbody>
+</table>
+
+

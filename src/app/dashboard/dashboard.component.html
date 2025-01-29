@@ -1,0 +1,24 @@
+<div class="parent">
+     <div class="top">
+        <h3>MINI-PROJECT</h3>
+
+     </div>
+    <div class="bot">
+        <div class="left">
+            <h1>Projects</h1><hr>
+            <h2 routerLink="home">Home</h2><br>
+            <h2 routerLink="create-employee">Create Employee</h2><br>
+            <h2 routerLink="all-employees">All Employees</h2>
+
+
+
+            <br><br><br>
+            <button class="btn btn-info"(click)="logout()">Logout</button>
+
+        </div>
+        <div class="right">
+            <router-outlet></router-outlet>
+
+        </div>
+    </div>
+</div>

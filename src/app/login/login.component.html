@@ -1,0 +1,13 @@
+<form action="" [formGroup]="loginForm">
+<div class="login-container">
+    <h1>Login</h1>
+        <label for="username">Username</label>
+        <input type="text" formControlName="email">
+
+        <label for="password">Password</label>
+        <input type="password" formControlName="password">
+        
+        <button (click)="login()">Login</button>
+    <a href="#">Forgot Password?</a>
+</div>
+</form>
